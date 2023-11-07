@@ -1,0 +1,22 @@
+<nz-layout>
+  <nz-header class="custom-header">
+      <img src="../../../assets/kaar_logo.png" alt="" class="logo">
+    <ul nz-menu [nzMode]="'horizontal'" [nzTheme]="'dark'" style="line-height: 64px;">
+      <li nz-menu-item>Home</li>
+      <li nz-menu-item>About</li>
+      <li nz-menu-item nzSubMenuTitle>Services</li>
+      <div class="right-menu">
+        <button nz-button [nzType]="buttonType_signin" (click)="onSignInClick()">
+          <i nz-icon nzType="user" nzTheme="outline"></i> Sign In
+        </button>
+        <button nz-button [nzType]="buttonType_signup" (click)="onSignUpClick()">
+          <i nz-icon nzType="user-add" nzTheme="outline"></i> Sign Up
+        </button>
+      </div>
+      
+    </ul>
+  </nz-header>
+  <nz-content>
+    <!-- Your landing page content goes here -->
+  </nz-content>
+</nz-layout>

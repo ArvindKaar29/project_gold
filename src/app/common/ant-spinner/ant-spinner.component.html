@@ -1,0 +1,6 @@
+<div class="spinner-container" *ngIf="showSpinner">
+    <div class="spinner-overlay"></div>
+    <img *ngIf="useSpinner=='fancy_pants'" src="../../../assets/Fancy pants.gif" alt="Loading..." class="custom-spinner">
+    <nz-spin *ngIf="useSpinner == 'antload'" [nzSize]="'large'" [nzSpinning]="true"></nz-spin>
+</div>
+  

@@ -1,0 +1,11 @@
+.logo {
+  float: left;
+  color: white;
+  font-size: 2px;
+  margin: 0 24px;
+  width: 63px;
+}
+
+.right-menu {
+  float: right;
+}

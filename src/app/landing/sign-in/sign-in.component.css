@@ -1,0 +1,26 @@
+.form{
+  width: 450px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.login-form {
+    width: 400px;
+    margin: 0 auto;
+    /* background-color: rgb(160, 183, 231); */
+    padding: 30px;
+  }
+
+  .login-form-margin {
+    margin-bottom: 20px;
+  }
+
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+  }
+
+  .eye-icon{
+    margin-top: 2% ;
+  }

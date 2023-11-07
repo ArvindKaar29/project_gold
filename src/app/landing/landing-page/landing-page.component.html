@@ -1,0 +1,19 @@
+<app-landing-navbar (signInClicked)="onSignInClicked()" (signUpClicked)="onSignUpClicked()"></app-landing-navbar>
+<app-sign-up *ngIf="this.toggle_log=='signup'"></app-sign-up>
+
+
+<div class="landing-container">
+  <div class="sign-in-container" *ngIf="toggle_log=='signin'">
+    <app-sign-in class="sign_in"></app-sign-in>
+  </div>
+
+  <div class="slider-container">
+    <nz-carousel [nzEffect]="'fade'" [nzAutoPlay]="true" [nzAutoPlaySpeed]="5000">
+      <div nz-carousel-content *ngFor="let slide of slides">
+        {{ slide.content }}
+      </div>
+    </nz-carousel>
+  </div>
+</div>
+
+  

@@ -10,19 +10,24 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { LandingModule } from './landing/landing.module';
+import { NgZorroAntdModule } from './common/NgZorroAntd.module';
+import { AntSpinnerComponent } from './common/ant-spinner/ant-spinner.component';
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AntSpinnerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    LandingModule,
+    NgZorroAntdModule,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

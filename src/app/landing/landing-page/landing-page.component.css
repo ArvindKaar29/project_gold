@@ -1,0 +1,40 @@
+.nz-carousel-content {
+    height: 100%; /* Set your desired height */
+    width: 100%; /* Set your desired width */
+    /* background-color: #bd0909; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+  }
+  .landing-container {
+    display: flex;
+    align-items: center;
+    height: 85vh;
+    /* background-image: url('../'); */
+  }
+  
+  .sign-in-container {
+    width: 50%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  
+  .slider-container {
+    width: 40%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: rgb(160, 183, 231);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+  
