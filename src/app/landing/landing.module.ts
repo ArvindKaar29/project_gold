@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LandingNavbarComponent } from './landing-navbar/landing-navbar.component';
@@ -7,6 +7,9 @@ import { NgZorroAntdModule } from '../common/NgZorroAntd.module';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 
@@ -21,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     LandingRoutingModule,
     NgZorroAntdModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreDevtoolsModule.instrument({})
   ]
 })
 export class LandingModule { }
