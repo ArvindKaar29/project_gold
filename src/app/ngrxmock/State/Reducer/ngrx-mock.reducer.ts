@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { Btnchng } from '../model/btnchng';
+import { Btnchng } from '../../model/btnchng';
 import { btnchng1, btnchng2, inputval } from '../Action/ngrx-mock.actions';
 
 

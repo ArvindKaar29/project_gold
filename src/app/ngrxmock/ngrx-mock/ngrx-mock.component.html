@@ -1,6 +1,6 @@
 <p>ngrx-mock works!</p>
 
-<h1>{{this.btnvalue1$ |async}}</h1>
+<h1>{{(this.btnvalue2$ |async)?.value}}</h1>
 
 <h2>{{(btnvalue2$ | async)?.value1}}</h2>
 
@@ -15,3 +15,55 @@
     <input type="text" placeholder="Enter string" [(ngModel)]="value">
     <button (click)="onAdd()">Add to string</button>
 </div>
+
+
+<br>
+
+<!-- <h1>{{(formValue$ |async)}}</h1> -->
+<div *ngFor="let formData of this.formValue$ | async">
+  <h1>{{ formData.firstName }}</h1>
+</div>
+
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" formControlName="firstName">
+      <div *ngIf="profileForm.get('firstName')?.invalid && profileForm.get('firstName')?.touched" class="error">
+        First Name is required.
+      </div>
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" formControlName="lastName">
+    </div>
+    <div formGroupName="address">
+      <div>
+        <label for="street">Street:</label>
+        <input type="text" id="street" formControlName="street">
+      </div>
+      <div>
+        <label for="city">City:</label>
+        <input type="text" id="city" formControlName="city">
+      </div>
+    </div>
+    <div formArrayName="aliases">
+        <button type="button" (click)="addAlias()">+ Add another alias</button>
+        <div *ngFor="let alias of aliases.controls; let i=index" [formGroupName]="i">
+            <label>
+                Alias {{i + 1}}:
+              </label>
+              <div>
+                <label for="val1">val1:</label>
+                <input type="text" id="val1" formControlName="val1">
+              </div>
+              <div>
+                <label for="val2">val2:</label>
+                <input type="text" id="val2" formControlName="val2">
+              </div>
+        </div>
+    </div>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+</form>
+
+  

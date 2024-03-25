@@ -13,6 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LandingModule } from './landing/landing.module';
 import { NgZorroAntdModule } from './common/NgZorroAntd.module';
 import { AntSpinnerComponent } from './common/ant-spinner/ant-spinner.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
 
 registerLocaleData(en);
 
@@ -29,6 +31,10 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     LandingModule,
     NgZorroAntdModule,
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      logOnly:true,
+    })
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }
