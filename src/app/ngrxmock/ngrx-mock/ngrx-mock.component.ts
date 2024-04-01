@@ -4,7 +4,7 @@ import { btnchng1, btnchng2, formSub, inputval } from '../State/Action/ngrx-mock
 import { Alias, AppState, Btnchng, FormData } from '../model/btnchng';
 import { Observable, filter, map } from 'rxjs';
 import { FormArray, Validators,FormBuilder,FormGroup, FormControl } from '@angular/forms';
-import { GetBtnValue, GetFormValue } from '../State/selector.selectors';
+import { GetBtnValue, GetFormById, GetFormValue } from '../State/selector.selectors';
 @Component({
   selector: 'app-ngrx-mock',
   templateUrl: './ngrx-mock.component.html',
@@ -86,6 +86,9 @@ export class NgrxMockComponent implements OnInit {
 
   onAdd(){
     this.store.dispatch(inputval({val:this.value}))
+    this.store.select(GetFormById,this.value).subscribe((data:FormData | undefined)=>{
+      console.log(data?data:'no id matches')
+    })
   }
 
   onSubmit(){
@@ -103,6 +106,6 @@ export class NgrxMockComponent implements OnInit {
   //       val2: alias.val2
   //     }))
   // };  
-  this.store.dispatch(formSub({ formData: post }));
+   this.store.dispatch(formSub({ formData: post }));
   }
 }

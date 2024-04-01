@@ -2,8 +2,8 @@
   <nz-header class="custom-header">
       <img src="../../../assets/kaar_logo.png" alt="" class="logo">
     <ul nz-menu [nzMode]="'horizontal'" [nzTheme]="'dark'" style="line-height: 64px;">
-      <li nz-menu-item routerLink="/ngrx_mock">Home</li>
-      <li nz-menu-item>About</li>
+      <li nz-menu-item routerLink="/ngrx_mock" (click)="onHomeClick()">Home</li>
+      <li nz-menu-item routerLink="/ngrx_mock" (click)="onAboutClick()">About</li>
       <li nz-menu-item nzSubMenuTitle>Services</li>
       <div class="right-menu">
         <button nz-button [nzType]="buttonType_signin" (click)="onSignInClick()">

@@ -1,8 +1,18 @@
 <app-landing-navbar (signInClicked)="onSignInClicked()" (signUpClicked)="onSignUpClicked()"></app-landing-navbar>
-<app-sign-up *ngIf="this.toggle_log=='signup'"></app-sign-up>
+<!-- <app-sign-up *ngIf="this.toggle_log=='signup'"></app-sign-up> -->
+
+
+<!-- <div class="landing-container"> -->
+  
+<!-- </div> -->
 
 
 <div class="landing-container">
+  
+  <div class="sign-up-container" *ngIf="this.toggle_log=='signup'">
+    <app-sign-up></app-sign-up>
+  </div>
+
   <div class="sign-in-container" *ngIf="toggle_log=='signin'">
     <app-sign-in class="sign_in"></app-sign-in>
   </div>

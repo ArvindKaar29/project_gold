@@ -25,8 +25,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     LandingRoutingModule,
     NgZorroAntdModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(reducers, { metaReducers }),
-    
   ]
 })
 export class LandingModule { }

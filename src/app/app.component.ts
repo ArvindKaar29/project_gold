@@ -19,6 +19,13 @@ export class AppComponent implements OnInit{
     setTimeout(() => {
       this.loaderService.hide();
     }, 5000);
+
+    window.addEventListener('beforeunload', () => {
+      localStorage.clear(); // Clear local storage when user leaves the page
+    });
+    window.addEventListener('popstate', () => {
+      localStorage.clear(); // Clear local storage when user navigates using back/forward button
+    });
   }
 
 }
