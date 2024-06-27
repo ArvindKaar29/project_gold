@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { getToggleValue } from '../Store/Action/landing.action';
+import { Store } from '@ngrx/store';
+import { landingpageValues } from '../Store/Reducer/landing.reducer';
 
 @Component({
   selector: 'app-sign-in',
@@ -8,7 +11,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class SignInComponent {
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,public store:Store) { }
 
   public validateForm: FormGroup<{
     userName: FormControl;
@@ -47,5 +50,12 @@ export class SignInComponent {
     // Add more conditions for other validation errors as needed
     return '';
   }
-
+  register(){
+    const toggle:landingpageValues={
+      toggle_log:'signup',
+      buttonType_signin:'default',
+      buttonType_signup:'primary'
+    }
+    this.store.dispatch(getToggleValue({toggle}))
+  }
 }

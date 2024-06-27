@@ -10,11 +10,11 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LandingModule } from './landing/landing.module';
 import { NgZorroAntdModule } from './common/NgZorroAntd.module';
 import { AntSpinnerComponent } from './common/ant-spinner/ant-spinner.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { LandingModule } from './component/landing/landing.module';
 
 registerLocaleData(en);
 

@@ -1,0 +1,38 @@
+/* [nz-form] {
+    max-width: 700px;
+  } */
+
+  button {
+    margin-left: 8px;
+  }
+
+  .form{
+    width: 550px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .login-form {
+      width: 500px;
+      margin: 0 auto;
+      /* background-color: rgb(160, 183, 231); */
+      padding: 30px;
+    }
+  
+    .login-form-margin {
+      margin-bottom: 20px;
+    }
+
+  .ant-select.ant-select-in-form-item.phone-select {
+    width: 70px;
+  }
+
+  nz-form-label{
+    text-align: start;
+  }
+  .eye-icon{
+    margin-top: 2% ;
+  }
+
+  .signup_btns{
+    align-items: end;
+
+  }

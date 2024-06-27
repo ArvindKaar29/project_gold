@@ -9,11 +9,11 @@
 
 <div class="landing-container">
   
-  <div class="sign-up-container" *ngIf="this.toggle_log=='signup'">
-    <app-sign-up></app-sign-up>
+  <div class="sign-up-container" *ngIf="(toggle_log$ | async)=='signup'">
+    <app-sign-up class="sign_in"></app-sign-up>
   </div>
 
-  <div class="sign-in-container" *ngIf="toggle_log=='signin'">
+  <div class="sign-in-container" *ngIf="(toggle_log$ | async)=='signin'">
     <app-sign-in class="sign_in"></app-sign-in>
   </div>
 

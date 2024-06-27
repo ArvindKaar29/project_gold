@@ -1,0 +1,92 @@
+<div class="form">
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="login-form">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="10" nzRequired>Username</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="userErrorTpl">
+        <nz-input-group nzPrefixIcon="user-add">
+        <input nz-input formControlName="userName" placeholder="User name" />
+        <ng-template #userErrorTpl let-control>
+          <span *ngIf="control.errors?.['required']">Please input your username!</span>
+          <span *ngIf="control.errors?.['duplicated']">The username is redundant!</span>
+        </ng-template>
+      </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    
+    <nz-form-item>
+      <nz-form-label [nzSpan]="10" nzRequired>E-mail</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+        <nz-input-group nzPrefixIcon="mail">
+        <input nz-input formControlName="email" placeholder="Mail" type="email" />
+        <ng-template #emailErrorTpl let-control>
+          <span *ngIf="control.errors?.['email']">The input is not valid E-mail!</span>
+          <span *ngIf="control.errors?.['required']">Please input your E-mail!</span>
+        </ng-template>
+      </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    
+    <nz-form-item>
+      <nz-form-label [nzSpan]="10" nzRequired>Password</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback nzErrorTip="Please input your password!">
+        <nz-input-group nzPrefixIcon="lock">
+        <input nz-input type="{{isPasswordVisible ? 'text' : 'password'}}" formControlName="password" placeholder="Password" (ngModelChange)="validateConfirmPassword()" />
+        <span nz-icon *ngIf="isPasswordVisible" nzType="eye-invisible" class="eye-icon"
+            (click)="togglePasswordVisibility()"></span>
+          <span nz-icon *ngIf="!isPasswordVisible" nzType="eye" class="eye-icon"
+            (click)="togglePasswordVisibility()"></span>
+          </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    
+    <nz-form-item>
+      <nz-form-label [nzSpan]="10" nzRequired>Confirm Password</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback [nzErrorTip]="passwordErrorTpl">
+        <nz-input-group nzPrefixIcon="unlock">
+        <input nz-input type="password" formControlName="confirm" placeholder="Confirm Your Password" />
+        <ng-template #passwordErrorTpl let-control>
+          <span *ngIf="control.errors?.['required']">Please confirm your password!</span>
+          <span *ngIf="control.errors?.['confirm']">Password is inconsistent!</span>
+        </ng-template>
+      </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    
+    <!-- <nz-form-item>
+      <nz-form-label [nzSpan]="7" nzRequired>Comment</nz-form-label>
+      <nz-form-control [nzSpan]="12" nzHasFeedback nzErrorTip="Please write something here!">
+        <nz-textarea-count [nzMaxCharacterCount]="2000">
+          <textarea formControlName="comment" nz-input rows="2" placeholder="write anything"></textarea>
+        </nz-textarea-count>
+      </nz-form-control>
+    </nz-form-item> -->
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="10" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+      <nz-form-control
+        [nzSm]="24"
+        [nzXs]="34"
+        [nzValidateStatus]="validateForm.controls['phoneNumber']"
+        nzErrorTip="Please input your phone number!"
+      >
+        <nz-input-group nzPrefixIcon="phone" [nzAddOnBefore]="addOnBeforeTemplate">
+          <ng-template #addOnBeforeTemplate>
+            <nz-select formControlName="phoneNumberPrefix" class="phone-select">
+              <nz-option nzLabel="+91" nzValue="+91"></nz-option>
+              <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+            </nz-select>
+          </ng-template>
+          <input formControlName="phonenumber" placeholder="Mobile number" id="'phoneNumber'" (keypress)="isNumberKey($event)" maxlength="10" nz-input />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    
+    <nz-form-item>
+      <nz-form-control [nzOffset]="7" [nzSpan]="18" class="signup_btns">
+        <button nz-button nzType="primary" [disabled]="!validateForm.valid" class="submit_btn">Submit</button>
+        <!-- <button nz-button (click)="resetForm($event)">Reset</button> -->
+        <button nz-button (click)="loginForm()" class="login_btn" [disabled]="validateForm.valid">Login</button>
+      </nz-form-control>
+    </nz-form-item>
+  </form> 
+</div>
