@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'landing', pathMatch: 'full' },  
   {
     path: 'landing',
     loadChildren: () => import('../app/component/landing/landing.module').then(m => m.LandingModule),
@@ -17,7 +18,6 @@ const routes: Routes = [
     loadChildren: () => import('../app/component/invalid/invalid.module').then(m => m.InvalidModule),
     canActivate:[AuthGuard]
   },
-  { path: '', redirectTo: '/landing', pathMatch: 'full' }, 
 ];
 
 @NgModule({

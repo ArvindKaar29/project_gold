@@ -3,7 +3,8 @@ import { AntSpinnerService } from './common/ant-spinner.service';
 import { Store } from '@ngrx/store';
 import { AppState } from './app.state';
 import { Observable } from 'rxjs';
-import { spinnerstatus } from './common/Store/Selector/shared.selectors';
+import { getmessagestatus, spinnerstatus } from './common/Store/Selector/shared.selectors';
+import { Message } from './common/Store/Reducer/shared.reducer';
 
 @Component({
   selector: 'app-root',
@@ -14,13 +15,24 @@ export class AppComponent implements OnInit{
 
   title = 'project_gold';
 
-  constructor(private loaderService: AntSpinnerService) {}
+  constructor(private loaderService: AntSpinnerService, public store:Store<AppState>) {}
 
+  msg$!: Observable<Message>;
+  public msg!: Message;
   ngOnInit(): void {
     this.loaderService.show();
+    this.msg$ = this.store.select(getmessagestatus);
+    this.msg$.subscribe((data)=>{
+      this.msg = data
+    })
     setTimeout(() => {
-      this.loaderService.hide();
-    }, 5000);
+      this.loaderService.hide(); 
+      const message:Message={
+        messagetxt:'Page Loaded Successfully..',
+        messagetype:'success'
+      }
+      this.loaderService.msgdisplay(message)
+    }, 2500);
 
     window.addEventListener('beforeunload', () => {
       localStorage.clear(); // Clear local storage when user leaves the page

@@ -17,6 +17,8 @@ import { StoreModule } from '@ngrx/store';
 import { LandingModule } from './component/landing/landing.module';
 import { PurespinnerComponent } from './common/purespinner/purespinner.component';
 import { appReducer } from './app.state';
+import { EffectsModule } from '@ngrx/effects';
+import { AlertComponent } from './common/alert/alert.component';
 
 registerLocaleData(en);
 
@@ -25,6 +27,7 @@ registerLocaleData(en);
     AppComponent,
     AntSpinnerComponent,
     PurespinnerComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     LandingModule,
     NgZorroAntdModule,
+    EffectsModule.forRoot([]),
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       logOnly:true,

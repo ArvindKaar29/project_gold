@@ -1,15 +1,24 @@
 import { createReducer, on } from '@ngrx/store';
-import { spinner } from '../Action/shared.actions';
+import { message, spinner } from '../Action/shared.actions';
 
 
 export const sharedFeatureKey = 'shared';
 
+export interface Message{
+  messagetxt:string,  
+  messagetype:'success' | 'info' | 'warning' | 'error';
+}
 export interface SharedState {
-  spinner:boolean
+  spinner:boolean,
+  message:Message
 }
 
 export const initialState: SharedState = {
-  spinner: false
+  spinner: false,
+  message:{
+    messagetxt:'',
+    messagetype:'success'
+  }
 };
 
 export const Sharedreducer = createReducer(
@@ -17,6 +26,10 @@ export const Sharedreducer = createReducer(
   on(spinner,(state,action)=>({
     ...state,
     spinner:action.status
+  })),
+  on(message,(state,action)=>({
+    ...state,
+    message:action.msg
   }))
 );
 

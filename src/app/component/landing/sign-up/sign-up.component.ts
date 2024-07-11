@@ -5,6 +5,7 @@ import { User, registerUser } from '../Store/Model/user';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Observable, Observer } from 'rxjs';
 import { landingpageValues } from '../Store/Reducer/landing.reducer';
+import { AntSpinnerService } from 'src/app/common/ant-spinner.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,7 @@ export class SignUpComponent implements OnInit{
   validateForm!: FormGroup;
 
 
-  constructor(public store: Store,private fb: FormBuilder){}
+  constructor(public store: Store,private fb: FormBuilder,private loaderservice:AntSpinnerService){}
   user :User = {
     username : '',
     password : '',
@@ -26,8 +27,7 @@ export class SignUpComponent implements OnInit{
   public is_admin:string = 'false';
 
   ngOnInit(){
-      this.store.dispatch(getUser())
-      // this.store.dispatch(addUser(this.user))
+      // this.store.dispatch(getUser())
       this.validateForm = this.fb.group({
         userName: ['', [Validators.required]],
         email: ['', [Validators.email, Validators.required]],
@@ -48,6 +48,7 @@ export class SignUpComponent implements OnInit{
  
 
   submitForm(): void {
+    this.loaderservice.show()
     const registereduser:registerUser = {
       userName: this.validateForm.get('userName')?.value,
       email: this.validateForm.get('email')?.value,
@@ -57,8 +58,9 @@ export class SignUpComponent implements OnInit{
       reportee: this.validateForm.get('isadmin')?.value == 'admin' ? this.validateForm.get('reportee')?.value : ''
     }
     console.log('submit', registereduser);
-    this.validateForm.reset();
-    this.loginForm();
+    this.store.dispatch(addUser(registereduser))
+    // this.validateForm.reset();
+    // this.loginForm();
   }
 
   loginForm(){

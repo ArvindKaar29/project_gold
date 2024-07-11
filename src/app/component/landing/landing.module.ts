@@ -11,6 +11,8 @@ import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LandingReducer } from './Store/Reducer/landing.reducer';
 import { NgZorroAntdModule } from 'src/app/common/NgZorroAntd.module';
+import { EffectsModule } from '@ngrx/effects';
+import { LandingEffects } from './Store/Effects/landing.effects';
 
 
 
@@ -27,6 +29,7 @@ import { NgZorroAntdModule } from 'src/app/common/NgZorroAntd.module';
     NgZorroAntdModule,
     ReactiveFormsModule,
     StoreModule.forFeature('landingreducer', LandingReducer),
+    EffectsModule.forFeature([LandingEffects]),
   ]
 })
 export class LandingModule { }

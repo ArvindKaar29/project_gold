@@ -10,3 +10,6 @@ export const spinnerstatus = createSelector(selectsharedfeature,(state)=>{
     return state.spinner
 })
 
+export const getmessagestatus = createSelector(selectsharedfeature,(state:SharedState)=>
+     state.message
+)

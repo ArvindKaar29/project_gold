@@ -1,0 +1,7 @@
+<nz-alert
+      [nzType]="msg?.messagetype ?? 'success'"
+      nzCloseable
+      [nzMessage]= "msg?.messagetxt ?? ''"
+      (nzOnClose)="afterClose()"
+      *ngIf="msg?.messagetxt"
+></nz-alert>

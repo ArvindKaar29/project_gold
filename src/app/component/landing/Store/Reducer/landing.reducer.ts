@@ -1,6 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { User } from "../Model/user";
-import { addUser, getToggleValue, getUser, } from "../Action/landing.action";
+import { addUser, addUserSuccess, getToggleValue, getUser, } from "../Action/landing.action";
 import { NzButtonType } from "ng-zorro-antd/button";
 
 export const UserFeatureKey = 'user'
@@ -27,14 +27,10 @@ const initialState: UserState = {
 
 export const userReducer = createReducer(
     initialState,
-    on(getUser, (state) =>(
+    on(addUserSuccess,(state,action)=>(
         {
             ...state,
-        })),
-    on(addUser,(state,{user})=>(
-        {
-            ...state,
-            user:[...state.user,user]
+            user:action.data
         }
     )),
     on(getToggleValue, (state , action) =>(
