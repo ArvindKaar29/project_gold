@@ -9,3 +9,12 @@ export class User {
         this.otp = otp;
     }
 }
+
+export interface registerUser{
+        userName: string,
+        email: string,
+        password: string,
+        phonenumber: number,
+        isadmin: boolean,
+        reportee?: string 
+  }

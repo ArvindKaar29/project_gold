@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { getToggleValue } from '../Store/Action/landing.action';
 import { Store } from '@ngrx/store';
 import { landingpageValues } from '../Store/Reducer/landing.reducer';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,7 +13,7 @@ import { landingpageValues } from '../Store/Reducer/landing.reducer';
 })
 export class SignInComponent {
 
-  constructor(private fb: FormBuilder,public store:Store) { }
+  constructor(private fb: FormBuilder,public store:Store,private router: Router,private authService:AuthService) { }
 
   public validateForm: FormGroup<{
     userName: FormControl;
@@ -37,6 +39,8 @@ export class SignInComponent {
 
   submitForm(): void {
     this.validateForm.markAllAsTouched();
+    localStorage.setItem('role','admin')
+    const auth = this.authService.navigateBasedOnRole();
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
     }

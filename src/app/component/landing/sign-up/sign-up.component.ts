@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { addUser, getToggleValue, getUser } from '../Store/Action/landing.action';
-import { User } from '../Store/Model/user';
+import { User, registerUser } from '../Store/Model/user';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Observable, Observer } from 'rxjs';
 import { landingpageValues } from '../Store/Reducer/landing.reducer';
@@ -23,6 +23,8 @@ export class SignUpComponent implements OnInit{
     otp : 1
   } 
 
+  public is_admin:string = 'false';
+
   ngOnInit(){
       this.store.dispatch(getUser())
       // this.store.dispatch(addUser(this.user))
@@ -32,14 +34,29 @@ export class SignUpComponent implements OnInit{
         password: ['', [Validators.required]],
         confirm: ['', [Validators.required],[this.confirmValidator]],
         phonenumber: ['', [Validators.required,Validators.maxLength(10),Validators.minLength(10)]],
-        phoneNumberPrefix: ['+91', [Validators.required]]
+        phoneNumberPrefix: ['+91', [Validators.required]],
+        isadmin:[false],
+        reportee:['',Validators.required]
       });
+
+      // this.validateForm.get('isadmin')?.valueChanges.subscribe((value) => {
+      //   this.is_admin = value;
+      //   this.onAdminCheckboxChange(value);
+      // });
   }
 
  
 
   submitForm(): void {
-    console.log('submit', this.validateForm.value);
+    const registereduser:registerUser = {
+      userName: this.validateForm.get('userName')?.value,
+      email: this.validateForm.get('email')?.value,
+      password: this.validateForm.get('confirm')?.value,
+      phonenumber: this.validateForm.get('phoneNumberPrefix')?.value + this.validateForm.get('phonenumber')?.value,
+      isadmin: this.validateForm.get('isadmin')?.value,
+      reportee: this.validateForm.get('isadmin')?.value == 'admin' ? this.validateForm.get('reportee')?.value : ''
+    }
+    console.log('submit', registereduser);
     this.validateForm.reset();
     this.loginForm();
   }
@@ -89,12 +106,28 @@ isNumberKey(event: KeyboardEvent): boolean {
   }
   return true;
 }
-// confirmValidator: ValidatorFn = (control: AbstractControl) => {
-//   if (!control.value) {
-//     return { error: true, required: true };
-//   } else if (control.value !== this.validateForm.controls.password.value) {
-//     return { confirm: true, error: true };
-//   }
-//   return {};
-// };
+
+
+onAdminCheckboxChange(checked: boolean): void {
+  this.is_admin = String(checked)
+  checked == true ? this.validateForm.get('reportee')?.clearValidators() : this.validateForm.get('reportee')?.setValidators([Validators.required])
+  this.validateForm.get('reportee')?.updateValueAndValidity()
+}
+
+
+// userNameAsyncValidator: AsyncValidatorFn = (control: AbstractControl) =>
+//     new Observable((observer: Observer<ValidationErrors | null>) => {
+//       setTimeout(() => {
+//         if (control.value === 'JasonWood') {
+//           // you have to return `{error: true}` to mark it as an error event
+//           observer.next({ error: true, duplicated: true });
+//         } else {
+//           observer.next(null);
+//         }
+//         observer.complete();
+//       }, 1000);
+//     });
+
+
+
 }

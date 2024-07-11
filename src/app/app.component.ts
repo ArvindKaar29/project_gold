@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AntSpinnerService } from './common/ant-spinner/ant-spinner.service';
+import { AntSpinnerService } from './common/ant-spinner.service';
+import { Store } from '@ngrx/store';
+import { AppState } from './app.state';
+import { Observable } from 'rxjs';
+import { spinnerstatus } from './common/Store/Selector/shared.selectors';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +16,8 @@ export class AppComponent implements OnInit{
 
   constructor(private loaderService: AntSpinnerService) {}
 
-
   ngOnInit(): void {
     this.loaderService.show();
-    // Perform data loading logic here
     setTimeout(() => {
       this.loaderService.hide();
     }, 5000);

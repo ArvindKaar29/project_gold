@@ -43,7 +43,7 @@ export class LandingNavbarComponent implements OnInit{
   }
 
   onHomeClick(){
-    this.authserv.homebtn()
+    // this.authserv.homebtn()
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AntSpinnerService } from './ant-spinner.service';
+import { AntSpinnerService } from '../ant-spinner.service';
 
 @Component({
   selector: 'app-ant-spinner',

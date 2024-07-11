@@ -15,13 +15,16 @@ import { AntSpinnerComponent } from './common/ant-spinner/ant-spinner.component'
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { LandingModule } from './component/landing/landing.module';
+import { PurespinnerComponent } from './common/purespinner/purespinner.component';
+import { appReducer } from './app.state';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    AntSpinnerComponent
+    AntSpinnerComponent,
+    PurespinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     LandingModule,
     NgZorroAntdModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       logOnly:true,
     })

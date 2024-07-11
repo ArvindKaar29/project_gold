@@ -80,6 +80,47 @@
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
+
+    <div nz-col [nzSpan]="24">
+      <label nz-checkbox formControlName="isadmin" (ngModelChange)="onAdminCheckboxChange($event)">
+        <span>Tick the Check-Box when you are coming under <b>Admin</b>...</span>
+      </label>
+    </div>
+    <br>
+
+
+
+    <nz-form-item *ngIf="this.is_admin == 'false'">
+      <nz-form-label [nzSpan]="10" nzFor="reporting_to" nzRequired>Reporting To</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback [nzErrorTip]="reportingerr">
+        <!-- <nz-input-group nzPrefixIcon="user"> -->
+        <nz-select
+          id="reporting to"
+          formControlName="reportee"
+          nzPlaceHolder="Select a option"
+          nzPrefixIcon="user"
+        >
+          <nz-option nzValue="male" nzLabel="male"></nz-option>
+          <nz-option nzValue="female" nzLabel="female"></nz-option>
+        </nz-select>
+        <ng-template #reportingerr let-control>
+          <span *ngIf="control.errors?.['required']">Please input your Reporting Manager!</span>
+        </ng-template>
+      <!-- </nz-input-group> -->
+      </nz-form-control>
+    </nz-form-item>
+    <!-- <nz-form-item>
+      <nz-form-label [nzSpan]="10" nzRequired>E-mail</nz-form-label>
+      <nz-form-control [nzSpan]="14" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+        <nz-input-group nzPrefixIcon="mail">
+        <input nz-input formControlName="email" placeholder="Mail" type="email" />
+        <ng-template #emailErrorTpl let-control>
+          <span *ngIf="control.errors?.['email']">The input is not valid E-mail!</span>
+          <span *ngIf="control.errors?.['required']">Please input your E-mail!</span>
+        </ng-template>
+      </nz-input-group>
+      </nz-form-control>
+    </nz-form-item> -->
     
     <nz-form-item>
       <nz-form-control [nzOffset]="7" [nzSpan]="18" class="signup_btns">
@@ -88,5 +129,6 @@
         <button nz-button (click)="loginForm()" class="login_btn" [disabled]="validateForm.valid">Login</button>
       </nz-form-control>
     </nz-form-item>
+
   </form> 
 </div>

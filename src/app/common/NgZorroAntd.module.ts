@@ -68,6 +68,7 @@ import { NzPipesModule } from 'ng-zorro-antd/pipes';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 
+
 @NgModule({
   exports: [
     NzAffixModule,
@@ -138,7 +139,6 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
     NzPipesModule,
   ],
   declarations: [
-  
   ]
 })
 export class NgZorroAntdModule {
