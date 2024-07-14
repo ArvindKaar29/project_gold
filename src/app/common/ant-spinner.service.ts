@@ -20,12 +20,12 @@ export class AntSpinnerService {
 
   show(): void {
     this.isLoading.next(true);
-    this.store.dispatch(spinner({status:true}))
+    this.store.dispatch(spinner({status:'show'}))
   }
 
   hide(): void {
     this.isLoading.next(false);
-    this.store.dispatch(spinner({status:false}))
+    this.store.dispatch(spinner({status:'hide'}))
   }
 
   msgdisplay(msg:Message):void {

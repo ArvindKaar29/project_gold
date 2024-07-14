@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class PurespinnerComponent implements OnInit{
 
-  showloading:Observable<boolean> | undefined;
+  showloading:Observable<number> | undefined;
 
 
 constructor(public store:Store<AppState>){
