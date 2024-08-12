@@ -51,8 +51,8 @@ export class UserTaskComponent implements OnInit{
   steps: Step[] = [
     {
       id: 1,
-      title: 'Step 1',
-      description: `This step is synchronous.`,
+      title: 'Basic Details',
+      description: `This step is to enter basic infofrmation.`,
       status:'process',
       percentage: null
     },
