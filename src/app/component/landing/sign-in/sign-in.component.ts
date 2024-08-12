@@ -39,7 +39,7 @@ export class SignInComponent {
 
   submitForm(): void {
     this.validateForm.markAllAsTouched();
-    localStorage.setItem('role','admin')
+    localStorage.setItem('role','user')
     const auth = this.authService.navigateBasedOnRole();
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);

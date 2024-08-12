@@ -2,22 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
-const routes: Routes = [
-  { path: '', redirectTo: 'landing', pathMatch: 'full' },  
+const routes: Routes = [  
   {
-    path: 'landing',
+    path: '',
     loadChildren: () => import('../app/component/landing/landing.module').then(m => m.LandingModule),
   },
   {
-    path: 'admin_page',
-    loadChildren: () => import('../app/component/Home/admin/admin.module').then(m => m.AdminModule),
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'home',
+    path: '404',
     loadChildren: () => import('../app/component/invalid/invalid.module').then(m => m.InvalidModule),
-    canActivate:[AuthGuard]
   },
+  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '/404' }, 
 ];
 
 @NgModule({

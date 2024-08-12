@@ -1,0 +1,151 @@
+<form nz-form [formGroup]="BasicForm" (ngSubmit)="submitForm()" class="form">
+
+  <div nz-row class="tool-box">
+
+    <!-- Subject -->
+    <div nz-col class="gutter-row" [nzSpan]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10" nzRequired>Subject</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="subjecterr">
+          <nz-input-group>
+            <input nz-input formControlName="subject" placeholder="Subject" />
+            <ng-template #subjecterr let-control>
+              <span *ngIf="control.errors?.['required']">Please input your Subject!</span>
+            </ng-template>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <!-- Request Type  -->
+    <div nz-col class="gutter-row" [nzSpan]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10" nzFor="request_type" nzRequired>Request Type</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback [nzErrorTip]="request_type">
+          <!-- <nz-input-group nzPrefixIcon="user"> -->
+          <nz-select id="request_type" formControlName="request_type" nzPlaceHolder="Select a option">
+            <nz-option nzValue="Service" nzLabel="Service"></nz-option>
+            <nz-option nzValue="Incident" nzLabel="Incident"></nz-option>
+          </nz-select>
+          <ng-template #request_type let-control>
+            <span *ngIf="control.errors?.['required']">Please input your Request type !</span>
+          </ng-template>
+          <!-- </nz-input-group> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div style="margin-bottom: 70px;"></div>
+    <!-- Issue On  -->
+    <div nz-col class="gutter-row" [nzSpan]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10" nzRequired>Issue On</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="issue_onerr">
+          <nz-input-group>
+            <input nz-input formControlName="issue_on" placeholder="Issue On" />
+            <ng-template #issue_onerr let-control>
+              <span *ngIf="control.errors?.['required']">Please input your Issue place!</span>
+            </ng-template>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <!-- Service Type  -->
+    <div nz-col class="gutter-row" [nzSpan]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10" nzRequired>Service Type</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback nzValidatingTip="Validating..." [nzErrorTip]="service_typeerr">
+          <nz-input-group>
+            <input nz-input formControlName="service_type" placeholder="Service_Type" />
+            <ng-template #service_typeerr let-control>
+              <span *ngIf="control.errors?.['required']">Please input your Service Type!</span>
+            </ng-template>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div style="margin-bottom: 70px;"></div>
+    <!-- cc  -->
+    <div nz-col class="gutter-row" [nzSpan]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10" nzFor="request_type" nzRequired>CC</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback [nzErrorTip]="cc_err">
+          <!-- <nz-input-group nzPrefixIcon="user"> -->
+          <nz-select id="cc" formControlName="cc" nzPlaceHolder="Select a option">
+            <nz-option nzValue="Service" nzLabel="Service"></nz-option>
+            <nz-option nzValue="Incident" nzLabel="Incident"></nz-option>
+          </nz-select>
+          <ng-template #cc_err let-control>
+            <span *ngIf="control.errors?.['required']">Please input your Approver Name !</span>
+          </ng-template>
+          <!-- </nz-input-group> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <!-- contact  -->
+    <div nz-col class="gutter-row" [nzSpan]="12">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10" nzFor="request_type" nzRequired>Contact</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback [nzErrorTip]="contact_typeerr">
+          <!-- <nz-input-group nzPrefixIcon="user"> -->
+          <nz-select id="contact_type" formControlName="contact_type" nzPlaceHolder="Select a option"
+            (ngModelChange)="OnValidationcheck($event,'contact')">
+            <!-- <nz-option nzValue="mobile" nzLabel="Mobile"></nz-option>
+            <nz-option nzValue="email" nzLabel="Email"></nz-option> -->
+            <nz-option *ngFor="let option of contactOptions" [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
+          </nz-select>
+          <ng-template #contact_typeerr let-control>
+            <span *ngIf="control.errors?.['required']">Please input your Contact type !</span>
+          </ng-template>
+          <!-- </nz-input-group> -->
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div style="margin-bottom: 70px;"></div>
+    <!-- email  -->
+    <div nz-col class="gutter-row" [nzSpan]="12" *ngIf="BasicForm.get('contact_type')?.value == 'email'">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10" nzRequired>E-mail</nz-form-label>
+        <nz-form-control [nzSpan]="14" nzHasFeedback [nzErrorTip]="emailErrorTpl">
+          <nz-input-group>
+            <input nz-input formControlName="email" placeholder="Mail" type="email" />
+            <ng-template #emailErrorTpl let-control>
+              <span *ngIf="control.errors?.['email']">The input is not valid E-mail!</span>
+              <span *ngIf="control.errors?.['required']">Please input your E-mail!</span>
+            </ng-template>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <!-- phone  -->
+    <!-- [nzValidateStatus]="validateForm.controls['phoneNumber']" -->
+    <div nz-col class="gutter-row" [nzSpan]="12" *ngIf="BasicForm.get('contact_type')?.value == 'mobile'">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="10" nzFor="phoneNumber" nzRequired>Phone Number</nz-form-label>
+        <nz-form-control nzErrorTip="Please input your phone number!">
+          <nz-input-group [nzAddOnBefore]="addOnBeforeTemplate">
+            <ng-template #addOnBeforeTemplate>
+              <nz-select formControlName="country_code" class="phone-select">
+                <nz-option nzLabel="+91" nzValue="+91"></nz-option>
+                <nz-option nzLabel="+87" nzValue="+87"></nz-option>
+              </nz-select>
+            </ng-template>
+            <input formControlName="mobile" placeholder="Mobile number" id="'phoneNumber'" (keypress)="isNumberKey($event)"
+              maxlength="10" nz-input />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+    </div>
+    <div nz-col class="gutter-row" [nzSpan]="12">
+
+    </div>
+
+
+
+  </div>
+
+  <!-- <nz-form-item>
+    <nz-form-control [nzSpan]="12" [nzOffset]="5">
+      <button type="submit" nz-button nzType="primary">Save Draft</button>
+    </nz-form-control>
+  </nz-form-item> -->
+
+</form>

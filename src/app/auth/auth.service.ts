@@ -26,6 +26,7 @@ export class AuthService {
       return true
     }
     if(localStorage.getItem('role')) return true
+    this.router.navigate(['/404']); 
     return false
   }
   navigateBasedOnRole(): void {
@@ -33,7 +34,7 @@ export class AuthService {
     if (role === 'admin') {
       this.router.navigate(['/admin_page']);
     } else if (role === 'user') {
-      this.router.navigate(['/user']);
+      this.router.navigate(['/user_page']);
     } else {
       this.router.navigate(['/landing']); // or any default route
     }

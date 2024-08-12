@@ -1,0 +1,17 @@
+.form{
+    margin: 20px;
+}
+
+:host ::ng-deep .ant-col-12{
+    flex: 0 0 42%;
+}
+
+.ant-select.ant-select-in-form-item.phone-select {
+    width: 70px;
+  }
+
+
+
+  .tool-box {
+    display: flex;
+  }

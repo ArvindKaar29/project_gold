@@ -14,11 +14,12 @@ import { NgZorroAntdModule } from './common/NgZorroAntd.module';
 import { AntSpinnerComponent } from './common/ant-spinner/ant-spinner.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
-import { LandingModule } from './component/landing/landing.module';
 import { PurespinnerComponent } from './common/purespinner/purespinner.component';
 import { appReducer } from './app.state';
 import { EffectsModule } from '@ngrx/effects';
 import { AlertComponent } from './common/alert/alert.component';
+import { LandingModule } from './component/landing/landing.module';
+import { InvalidModule } from './component/invalid/invalid.module';
 
 registerLocaleData(en);
 
@@ -36,6 +37,7 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     LandingModule,
+    InvalidModule,
     NgZorroAntdModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot(appReducer),

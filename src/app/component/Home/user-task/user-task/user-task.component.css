@@ -1,0 +1,61 @@
+.steps-content {
+    border: 1px dashed #e9e9e9;
+    border-radius: 6px;
+    background-color: #fafafa;
+    /* min-height: 200px; */
+    text-align: center;
+    /* padding-top: 80px; */
+    display: contents;
+    width: 66%;
+  }
+
+  .form{
+    margin: 8px;
+  }
+
+  .steps-action {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+
+  button {
+    margin-right: 8px;
+    float: right;
+  }
+
+
+
+
+  .like-dislike-container {
+    --dark-grey: #353535;
+    --middle-grey: #767676;
+    --lightest-grey: linear-gradient(#fafafa,#ebebeb);
+    --shadow: 0 5px 15px 0 #00000026;
+    --shadow-active: 0 5px 5px 0 #00000026;
+    --border-radius-main: 10px;
+    --border-radius-icon: 50px;
+    /* position: relative;
+    top: 13%; */
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    cursor: default;
+    color: var(--dark-grey);
+    opacity: .9;
+    margin: auto;
+    padding: 1.5rem;
+    font-weight: 600;
+    background: var(--lightest-grey);
+    max-width: 1300px;
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--shadow);
+    transition: .2s ease all;
+  }
+  
+  .like-dislike-container:hover {
+    box-shadow: var(--shadow-active);
+  }
+  
+  
